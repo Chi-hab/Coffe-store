@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+
+{% load widget_tweaks %}
+{% block content %}
+    
+<div class="min-h-screen bg-[#f5f3f0] py-10 px-6">
+  <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-2xl overflow-hidden">
+    
+    <!-- Header -->
+    <div class="bg-[#3e2723] text-white py-6 px-8 flex justify-between items-center">
+      <h1 class="text-2xl font-bold">☕ Coffee Shop - Order</h1>
+      <span class="text-lg font-medium">Table #12</span>
+    </div>
+
+    <!-- Order Info -->
+    <div class="px-8 py-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <form method='POST'>
+            {% csrf_token %}
+            <div>
+               <h2 class="text-lg font-semibold text-[#3e2723]">Table number : </h2>
+               {{form.table_num|add_class:"form-control"}}
+               <button type="submit" class="px-6 py-2 rounded-xl bg-[#3e2723] text-white hover:bg-[#4e342e] shadow-md">
+               Place Order
+               </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}
+    

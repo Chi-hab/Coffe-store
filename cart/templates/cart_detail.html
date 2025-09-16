@@ -1,0 +1,77 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<!-- Shopping Cart Page -->
+<div class="min-h-screen bg-[#f8f5f2] py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-5xl mx-auto bg-white shadow-xl rounded-2xl p-8">
+    <!-- العنوان -->
+    <h1 class="text-3xl font-bold text-[#3e2723] mb-8 flex items-center gap-2">
+      🛒 Your Coffee Cart
+    </h1>
+
+    {% if cart %}
+      <!-- قائمة المنتجات -->
+      <div class="space-y-6">
+        {% for item in cart %}
+          <div class="flex items-center justify-between border-b pb-4">
+            <div class="flex items-center gap-4">
+              <!-- صورة المنتج -->
+              <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}"
+                   class="w-20 h-20 rounded-xl shadow-md object-cover">
+
+              <!-- تفاصيل المنتج -->
+              <div>
+                <h2 class="text-lg font-semibold text-[#3e2723]">{{ item.product.name }}</h2>
+                <p class="text-sm text-gray-500">{{ item.product.description|truncatewords:8 }}</p>
+              </div>
+            </div>
+
+            <!-- السعر والكمية -->
+            <div class="flex items-center gap-6">
+              <span class="text-gray-600">x{{ item.quantity }}</span>
+              <span class="font-semibold text-[#3e2723]">${{ item.price }}</span>
+              <span class="font-bold text-[#6d4c41]">${{ item.total_price }}</span>
+            </div>
+
+            <form action="{% url 'cart_remove' item.product.id %}" method="post">
+              {% csrf_token %}
+              <input type="submit" class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-800 transition" value = 'Remove'>
+            </form>
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- الإجمالي -->
+      <div class="mt-8 flex justify-between items-center border-t pt-6">
+        <h3 class="text-xl font-bold text-[#3e2723]">Total:</h3>
+        <p class="text-2xl font-extrabold text-[#6d4c41]">${{ cart.get_total_price }}</p>
+      </div>
+
+      <!-- أزرار -->
+      <div class="mt-6 flex justify-end gap-4">
+        <a href="{% url 'menu' %}"
+           class="px-6 py-3 rounded-xl bg-gray-200 text-[#3e2723] font-medium hover:bg-gray-300 transition">
+          Continue Shopping
+        </a>
+        <a href="{% url 'order' %}"
+           class="px-6 py-3 rounded-xl bg-[#6d4c41] text-white font-bold shadow-lg hover:bg-[#4e342e] transition">
+           Order
+        </a>
+      </div>
+    {% else %}
+      <!-- لو السلة فارغة -->
+      <div class="text-center py-16">
+        <p class="text-xl text-gray-600">☕ Your coffee cart is empty.</p>
+        <a href="{% url 'menu' %}"
+           class="mt-6 inline-block px-6 py-3 rounded-xl bg-[#6d4c41] text-white font-bold shadow-lg hover:bg-[#4e342e] transition">
+          Browse Coffee
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+
+{% endblock content %}
+

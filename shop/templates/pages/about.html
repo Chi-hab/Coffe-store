@@ -1,0 +1,87 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+  <title>About Us - CoffeeShop</title>
+{% endblock title %}
+
+
+{% block content %}
+ <!-- Hero Section -->
+  <section class="relative bg-[url('https://images.unsplash.com/photo-1509042239860-f550ce710b93')] bg-cover bg-center h-80 flex items-center justify-center text-white">
+    <div class="bg-black bg-opacity-50 absolute inset-0"></div>
+    <div class="relative text-center">
+      <h1 class="text-4xl md:text-5xl font-bold">About CoffeeShop ☕</h1>
+      <p class="mt-3 text-lg text-gray-200">Brewing smiles since 2020</p>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="max-w-6xl mx-auto py-16 px-6 grid md:grid-cols-2 gap-10 items-center">
+    <img src="https://images.unsplash.com/photo-1510626176961-4b57d4fbad03" 
+         alt="Coffee Shop" 
+         class="rounded-2xl shadow-lg">
+    <div>
+      <h2 class="text-3xl font-bold text-[#3e2723] mb-4">Our Story</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        At <span class="font-semibold text-[#3e2723]">CoffeeShop</span>, we believe coffee is more than a drink — 
+        it’s a way to connect, relax, and create memories. Since opening our doors in 2020, 
+        we’ve been committed to serving freshly roasted coffee, delicious pastries, 
+        and warm vibes in a cozy atmosphere.
+      </p>
+      <p class="text-gray-700 leading-relaxed">
+        Whether you’re grabbing your morning espresso or spending an afternoon with friends, 
+        CoffeeShop is your second home. Our passion is to make every cup unforgettable.
+      </p>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="bg-yellow-50 py-16">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold text-[#3e2723] mb-10">Our Values</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition">
+          <h3 class="text-xl font-semibold mb-2">☕ Quality</h3>
+          <p class="text-gray-600">We source the finest beans and craft every cup with love and precision.</p>
+        </div>
+        <div class="p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition">
+          <h3 class="text-xl font-semibold mb-2">🤝 Community</h3>
+          <p class="text-gray-600">Our coffee shop is a gathering place where connections are made daily.</p>
+        </div>
+        <div class="p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition">
+          <h3 class="text-xl font-semibold mb-2">🌱 Sustainability</h3>
+          <p class="text-gray-600">We care for the planet by choosing eco-friendly practices at every step.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="max-w-6xl mx-auto py-16 px-6">
+    <h2 class="text-3xl font-bold text-[#3e2723] text-center mb-10">Meet Our Team</h2>
+    <div class="grid md:grid-cols-3 gap-8 text-center">
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
+        <img src="{% static 'image/ceo.jpg' %}"
+             alt="Barista" 
+             class="w-28 h-28 rounded-full mx-auto mb-4 object-cover">
+        <h3 class="text-lg font-semibold">Alex Johnson</h3>
+        <p class="text-sm text-gray-600">Head Barista</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
+        <img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39"
+             alt="Chef" 
+             class="w-28 h-28 rounded-full mx-auto mb-4 object-cover">
+        <h3 class="text-lg font-semibold">Maria Lopez</h3>
+        <p class="text-sm text-gray-600">Pastry Chef</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
+        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e"
+             alt="Manager" 
+             class="w-28 h-28 rounded-full mx-auto mb-4 object-cover">
+        <h3 class="text-lg font-semibold">James Miller</h3>
+        <p class="text-sm text-gray-600">Store Manager</p>
+      </div>
+    </div>
+  </section>
+{% endblock content %}

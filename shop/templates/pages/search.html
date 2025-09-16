@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+
+{% block content %}
+{% for product in pro %}
+<div class="grid md:grid-cols-3 gap-8">
+    <div class="bg-white rounded-xl shadow-md hover:shadow-x1 transition p-5 flex flex-col">
+        <img src="{{product.image.url}}" 
+             alt="Latte" 
+             class="h-52 w-full object-cover rounded-lg mb-4">
+        <h3 class="text-xl font-semibold text-[#3e2723]">{{product.name}}</h3>
+        <p class="text-gray-600 text-sm mt-2">{{product.description}}</p>
+        <div class="mt-auto flex items-center justify-between pt-4">
+          <span class="text-lg font-bold text-yellow-600">${{product.price}}</span>
+          <form action="{% url 'cart_add' product.id %}" method='POST'>
+            {% csrf_token %}
+            {{cart_product_form}}
+            <input type='submit' class="bg-[#3e2723] text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition" value="Add to Cart">
+          </form>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock content %}

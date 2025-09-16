@@ -1,0 +1,38 @@
+<!-- Navbar -->
+<nav class="bg-[#3e2723] text-white shadow-lg sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+    
+    <!-- Logo -->
+    <a href="{% url 'home' %}" class="text-2xl font-bold tracking-wide flex items-center">
+      ☕ CoffeeShop
+    </a>
+
+    <!-- Links -->
+    <div class="hidden md:flex space-x-8 text-lg font-medium">
+      <a href="{% url 'home' %}" class="hover:text-yellow-400 transition">Home</a>
+      <a href="{% url 'menu' %}" class="hover:text-yellow-400 transition">Menu</a>
+      <a href="{% url 'about' %}" class="hover:text-yellow-400 transition">About</a>
+    </div>
+
+    <!-- Search + Cart -->
+    <div class="flex items-center space-x-4">
+      <!-- Search bar -->
+      <form action="{% url 'search' %}" method="GET" class="hidden md:flex bg-white rounded-full overflow-hidden">
+        <input type="text" name="searchname" placeholder="Search coffee..." 
+               class="px-3 py-1 text-gray-700 focus:outline-none w-40" />
+        <button type="submit" class="px-3 text-[#3e2723] font-bold">🔍</button>
+      </form>
+
+      <!-- Shopping Cart -->
+      <a href="{% url 'cart_detail' %}" class="relative">
+        🛒
+        <span class="absolute -top-2 -right-2 bg-yellow-400 text-[#3e2723] text-xs font-bold px-2 py-0.5 rounded-full">
+          {{ cart_count }}
+        </span>
+      </a>
+    </div>
+
+    <!-- Mobile menu button -->
+    <button class="md:hidden text-2xl">☰</button>
+  </div>
+</nav>
